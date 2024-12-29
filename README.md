@@ -1,5 +1,9 @@
 # jankdb
 
+[![Build & Test CI](https://github.com/guarzo/jankdb/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/guarzo/jankdb/actions/workflows/ci.yml)
+[![Release Workflow](https://github.com/guarzo/jankdb/actions/workflows/release.yml/badge.svg)](https://github.com/guarzo/jankdb/actions/workflows/release.yml)
+
+
 A **lightweight** and **extensible** key-value store for Go, supporting:
 1. **Atomic Writes** (writes to a temporary file, then renames to final).
 2. **Optional JSON Encryption** (AES-GCM, with a scrypt-derived key).
