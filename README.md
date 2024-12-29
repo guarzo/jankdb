@@ -54,36 +54,36 @@ import (
     "github.com/guarzo/jankdb"
 )
 
-type LootSplit struct {
+type SomeStruct struct {
 // ... your fields
 }
 
 func main() {
 fs := jankdb.OSFileSystem{}
 opts := jankdb.StoreOptions{
-SubDir:       "loot",
-FileName:     "loot_split.json",
+SubDir:       "subdir",
+FileName:     "some_struct.json",
 EnableBackup: true,  // create a .bak file before overwriting
 UseCache:     false, // no in-memory caching
 EncryptionKey: "",   // empty => no encryption
 }
 
-    lootStore, err := jankdb.NewStore[[]LootSplit](fs, "/path/to/base", opts)
+    someStore, err := jankdb.NewStore[[]SomeStruct](fs, "/path/to/base", opts)
     if err != nil {
         panic(err)
     }
 
     // Load existing data from disk if present
-    if err := lootStore.Load(); err != nil {
+    if err = someStore.Load(); err != nil {
         panic(err)
     }
 
     // Access or modify
-    splits := lootStore.Get()
-    fmt.Println("Current loot splits:", splits)
+    somes := someStore.Get()
+    fmt.Println("Current loot splits:", somes)
 
     // Save changes
-    if err := lootStore.Save(); err != nil {
+    if err = someStore.Save(); err != nil {
         panic(err)
     }
 }
