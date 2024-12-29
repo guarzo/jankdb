@@ -3,31 +3,23 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'  # triggers on any tag that starts with "v"
+      - 'v*'
+  workflow_dispatch:
 
 jobs:
   build-test-and-release:
     runs-on: ubuntu-latest
-
-    # ADD THIS PERMISSIONS BLOCK
-    permissions:
-      contents: write
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
           go-version: '1.19'
-
       - name: Build
         run: go build ./...
-
       - name: Test
         run: go test -v ./...
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
